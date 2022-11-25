@@ -196,11 +196,16 @@ elseif($_SESSION['permisos_accesos']=='Leader'){?>
             //if($_GET['module']=="start"){?>
                    <li class="treeview">
                     <a href="javascript:void(0);" style="color: #8181F7">
-                        <i class="fa fa-file-text"></i><strong><span>Informes</span></strong><i class="fa fa-angle-left pull-right"></i>
+                        <i class="fa fa-file-text"></i><strong><span>Mantener Referenciales</span></strong><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Informes Referenciales</a></li>
-                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Informes de Movimiento</a></li>
+                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Mantener Tarjetas </a></li>
+                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Mantener Banco</a></li>
+                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Mantener Cliente</a></li>
+                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Mantener Timbrado</a></li>
+                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Amantener Caja</a></li>
+                        <li><a href="?module=?"><i class="fa fa-circle-o"></i>Mantener forma de cobro
+                    </a></li>
                     </ul>
                     
                 </li>
