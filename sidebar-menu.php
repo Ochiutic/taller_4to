@@ -28,6 +28,7 @@ if($_SESSION['permisos_accesos']=='Super Admin'){?>
                          <li><a href="?module=productos"><i class="fa fa-circle-o"></i>Productos</a></li>
                          <li><a href="?module=operarios"><i class="fa fa-circle-o"></i>Operarios</a></li>
                          <li><a href="?module=deposito"><i class="fa fa-circle-o"></i>Deposito</a></li>
+                         <li><a href="?module=stock"><i class="fa fa-circle-o"></i>Stock</a></li>
                     </ul>
 
                     <ul class="treeview-menu">
@@ -36,6 +37,8 @@ if($_SESSION['permisos_accesos']=='Super Admin'){?>
                     </a>
                         <li><a href="?module=razon_social"><i class="fa fa-circle-o"></i>Clientes</a></li>
                          <li><a href="?module=user"><i class="fa fa-circle-o"></i>Usuarios</a></li>
+                         
+                        </a></li>
                         
                     </ul>
                    
@@ -139,9 +142,11 @@ elseif($_SESSION['permisos_accesos']=='Supervisor'){?>
                             <i class="fa fa-file-text" ></i><strong><span>Referenciales Compras</span></strong><i class="fa fa-angle-left pull-right" ></i>
                          </a>
                         <li><a href="?module=materia_prima"><i class="fa fa-circle-o"></i>Sucursal</a></li>
-                         <li><a href="?module=sector"><i class="fa fa-circle-o"></i>Producto</a></li>
-                         <li><a href="?module=sucursal"><i class="fa fa-circle-o"></i>Proveedor</a></li>
+                         <li><a href="?module=producto"><i class="fa fa-circle-o"></i>Producto</a></li>
+                         <li><a href="?module=proveedor"><i class="fa fa-circle-o"></i>Proveedor</a></li>
                          <li><a href="?module=productos"><i class="fa fa-circle-o"></i>Usuario</a></li>
+                         <li><a href="?module=cliente"><i class="fa fa-circle-o"></i>Clientes</a></li>
+                         <li><a href="?module=stock"><i class="fa fa-circle-o"></i>stock</a></li>
                         
                     </ul>
                    
@@ -155,7 +160,7 @@ elseif($_SESSION['permisos_accesos']=='Supervisor'){?>
                     <a href="javascript:void(0);" style="color: #8181F7">
                         <i class="fa fa-file-text"></i><strong><span>Compras</strong><i class="fa fa-angle-left pull-right"></i>
                     </a>           
-                        <li><a href="?module=productos"><i class="fa fa-circle-o"></i>Registrar Pedido de Compras</a></li>
+                        <li><a href="?module=compra"><i class="fa fa-circle-o"></i>Registrar Pedido de Compras</a></li>
                         <li><a href="?module=control"><i class="fa fa-circle-o"></i>Regsitrar Presupuesto de Proveedores</a></li>
                     </ul>
                    

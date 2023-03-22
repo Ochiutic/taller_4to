@@ -104,17 +104,19 @@ if ($_GET['form'] == 'add') { ?>
                                             echo "<option value=\"$data_sec[cod_sector]\">$data_sec[cod_sector] | $data_sec[descrip_sector]</option>";
                                         }
                                         ?>
-                                    </select>
-                                </div>
+                                    </select>                        
+                                </div>    
                             </div>
+
                             <div class="form-group">
-                            <label class="col-sm-2 control-label">Fecha Inicio</label>
+                            <label class="col-sm-3 control-label">Fecha Inicio</label>
                                 <div class="col-sm-2">
                                     <input type="date"  value="2023-03-01"
                                         name="inicio">
                                 </div>
 
-                                <label class="col-sm-2 control-label">Fecha Fin</label>
+                                <label class="col-sm-2
+                                 control-label">Fecha Fin</label>
                                 <div class="col-sm-2">
                                     <input type="date"  value="2023-03-01"
                                         name="fin">
@@ -123,10 +125,10 @@ if ($_GET['form'] == 'add') { ?>
                                 <hr>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label class="col-sm-2 control-label">Orden de Produccion</label>
+                                        <label class="col-sm-2 control-label">Productos a Producir</label>
                                         <button type="button" class="btn btn-info" data-toggle="modal"
                                             data-target="#myModal">
-                                            <span class="glyphicon glyphicon-plus">Agregar Orden de Produccion</span>
+                                            <span class="glyphicon glyphicon-plus">Agregar Productos a Producir</span>
                                         </button>
                                     </div>
                                 </div>

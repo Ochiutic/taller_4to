@@ -18,9 +18,11 @@ else{
                 $cod_producto= $row['id_productos'];
                 $codigo_productos= $row['cod_producto'];
                 $cantidad= $row['cantidad_tmp'];
+                $operarios= $_POST['operarios'];
+                $sectores= $_POST['sectores'];
 
-                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_orden (cod_orden, cod_producto, cantidad) 
-                                                        VALUES ( $cod_producto, $codigo, $cantidad)")
+                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_orden (cod_orden, cod_producto, cantidad, operarios, sectores) 
+                                                        VALUES ( $cod_producto, $codigo, $cantidad, $operarios, $sectores)")
                 or die('Error 22: '.mysqli_error($mysqli));
 
                 //Insertar orden
