@@ -8,17 +8,21 @@
                                                         WHERE cod_orden = $codigo")
                                                         or die('error'.mysqli_error($mysqli));
             while($data = mysqli_fetch_assoc($cabecera_orden)){
-                                    $cod= $data['cod_orden'];
-                                    $descri_orden = $data['descri_orden'];
-                                    $descri_pedi = $data['descri_pedi'];
-                                    $fecha = $data['fecha'];
-                                    $hora = $data['hora'];
-                                    $estado_ = $data['estado_'];
+                $cod= $data['cod_orden'];
+                $descri_orden = $data['descri_orden'];
+                $descri_pedi = $data['descri_presu'];
+                $fecha = $data['fecha'];
+                $hora = $data['hora'];
+                $estado_ = $data['estado_'];
+                $fecha_ini= $data['fecha_ini'];
+                $fecha_fin= $data['fecha_fin'];
             }
         }
          //Detal|le de Orden
          $detalle_orden = mysqli_query($mysqli, "SELECT *FROM v_detalle_orden WHERE cod_orden= $codigo")
-         or die('error'.mysqli_error($mysqli));                                          
+         or die('error'.mysqli_error($mysqli));  
+         
+         
     }
 ?>
 <!DOCTYPE html>
@@ -44,6 +48,11 @@
             <label><strong>Fecha Emisión :</strong><?php echo $fecha; ?></label><br>
             <label><strong>Hora de Emisión :</strong><?php echo $hora; ?></label><br>            
             <label><strong>Estado de la Orden :</strong><?php echo $estado_; ?></label><br>
+            
+        </div>
+        <div style="border: solid" align="center">
+        <label><strong>Fecha de Inicio de Produccion :</strong><?php echo $fecha_ini; ?></label><br> 
+            <label><strong>Fecha fin de Produccion :</strong><?php echo $fecha_fin; ?></label><br>
         </div>
         <div style="border: solid">  </div>
         <div>
@@ -54,6 +63,8 @@
                         <th height="30" align="center" valign="middle"><small>Descripción del Producto</small></th>
                         <th height="30" align="center" valign="middle"><small>Orden de Produccion</small></th>
                         <th height="30" align="center" valign="middle"><small>Cantidad</small></th>
+                        <th height="30" align="center" valign="middle"><small>Operarios</small></th>
+                        <th height="30" align="center" valign="middle"><small>Sectores de Trabajo</small></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,11 +74,15 @@
                         $descrip_producto= $data2['descrip_producto'];
                         $part_number = $data2['part_number'];
                         $cantidad = $data2['cantidad'];
+                        $operarios= $data2['nombre'];
+                        $sectores= $data2['descrip_sector'];
                             echo "<tr>
                                     <td width='80' align='center'>$codigo1</td>
-                                    <td width='400' align='left'>$descrip_producto</td>
+                                    <td width='100' align='left'>$descrip_producto</td>
                                     <td width='100' align='center'>$part_number</td>
-                                    <td width='150' align='center'>$cantidad</td>
+                                    <td width='100' align='center'>$cantidad</td>
+                                    <td width='150' align='center'>$operarios</td>
+                                    <td width='150' align='center'>$sectores</td>
                                 </tr>";
                         }
                     ?>

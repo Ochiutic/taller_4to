@@ -21,7 +21,7 @@ else{
                 $operarios= $_POST['operarios'];
                 $sectores= $_POST['sectores'];
 
-                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_orden (cod_orden, cod_producto, cantidad, operarios, sectores) 
+                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_orden (cod_orden, cod_producto, cantidad, id_operario, cod_sector) 
                                                         VALUES ( $cod_producto, $codigo, $cantidad, $operarios, $sectores)")
                 or die('Error 22: '.mysqli_error($mysqli));
 
@@ -31,14 +31,18 @@ else{
             //Insertar cabecera de orden
             //Definir variable
             $descri_orden = $_POST['descri_orden'];
-            $cod_pedi = $_POST['cod_pedi'];
+            $presup = $_POST['presup'];
             $fecha = $_POST['fecha'];
             $hora = $_POST['hora'];
             $estado_ ='activo';
+            $fecha_ini= $_POST['inicio'];
+            $fecha_fin= $_POST['fin'];
+            
             
             //insertar
-            $query = mysqli_query($mysqli, "INSERT INTO orden_produccion (cod_orden, descri_orden, fecha, hora, estado_, cod_pedi)
-            VALUES ($codigo, '$descri_orden','$fecha', '$hora', '$estado_', $cod_pedi)")
+            $query = mysqli_query($mysqli, "INSERT INTO orden_produccion (cod_orden, descri_orden, fecha, hora, estado_, cod_presu, 
+            fecha_ini, fecha_fin)
+            VALUES ($codigo, '$descri_orden','$fecha', '$hora', '$estado_', $presup, '$fecha_ini', '$fecha_fin' )")
             or die('Error'.mysqli_error($mysqli));
 
             if($query){

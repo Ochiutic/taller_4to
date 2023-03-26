@@ -39,7 +39,7 @@
                 <div class="box-body">
                 <section class="content-header">
                     
-                </section>
+                
 
                     <table id="dataTables1" class="table table-bordered table-striped table-hover">
                         <h2>Lista de Pedidos</h2>

@@ -60,7 +60,7 @@
                                 </div>
                                 <!------------------------------------------->
                                 <div class="col-sm-3">
-                                    <button tyoe="submit" class="btn btn-primary btn-social btn-submit" style="width:170px">
+                                    <button type="submit" class="btn btn-primary btn-social btn-submit" style="width:170px">
                                         <i class="fa fa-file-text-o icon-title"></i>
                                         Buscar Materia
                                     </button>

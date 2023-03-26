@@ -64,7 +64,7 @@
                             <tr>
                                 <th class="center">Codigo</th>
                                 <th class="center">Descripcion de la Orden</th>
-                                <th class="center">Descripcion de Pedido</th>
+                                <th class="center">Presupuesto Aprobados</th>
                                 <th class="center">Fecha</th>
                                 <th class="center">Hora</th>
                                 <th class="center">Estado</th>
@@ -80,7 +80,7 @@
                                 while($data = mysqli_fetch_assoc($query)){
                                     $cod= $data['cod_orden'];
                                     $descri_orden = $data['descri_orden'];
-                                    $descri_pedi = $data['descri_pedi'];
+                                    $descri_pedi = $data['descri_presu'];
                                     $fecha = $data['fecha'];
                                     $hora = $data['hora'];
                                     $estado_ = $data['estado_'];
@@ -97,14 +97,14 @@
             <?php
                                     if ($data['estado_']=='activo') { ?>
                             <a data-toggle="tooltip" data-placement="top" title="bloqueado" style="margin-right:5px" 
-                            class="btn btn-warning btn-sm" href="modules/orden_produccion/proses.php?act=anular&cod_orden=<?php echo $data['cod_orden'];?>&cod_pedi=<?php echo $data['cod_pedi'];?>">
+                            class="btn btn-warning btn-sm" href="modules/orden_produccion/proses.php?act=anular&cod_orden=<?php echo $data['cod_orden'];?>&cod_presu=<?php echo $data['cod_presu'];?>">
                             <i class="glyphicon glyphicon-remove"></i>
                             </a>
             <?php
                           } 
                           else { ?>
                             <a data-toggle="tooltip" data-placement="top" title="activo" style="margin-right:5px" 
-                            class="btn btn-success btn-sm" href="modules/orden_produccion/proses.php?act=on&cod_orden=<?php echo $data['cod_orden'];?>&cod_pedi=<?php echo $data['cod_pedi'];?>">
+                            class="btn btn-success btn-sm" href="modules/orden_produccion/proses.php?act=on&cod_orden=<?php echo $data['cod_orden'];?>&cod_presu=<?php echo $data['cod_presu'];?>">
                                 <i style="color:#fff" class="glyphicon glyphicon-ok"></i>
                             </a>
             <?php

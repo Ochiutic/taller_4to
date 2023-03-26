@@ -230,6 +230,25 @@
                     </div>
                 </div>
 
+                <div class="col-lg-4 col-xs-6">
+                    <div style="background-color: #1B8BB6; color: #fff" class="small-box">
+                        <div class="inner">
+                            <p><strong>Registrar Compras</strong>
+                                <ul>
+                                    <li>Registrar </li>
+                                    <li>y generar IVA de</li>
+                                    <li>Compras</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-list-ol"></i>
+                        </div>
+                            <a href="?module=registrar_compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
+                            <i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+
 
                 <div class="col-lg-4 col-xs-6">
                     <div style="background-color: #D02B16; color: #fff" class="small-box">
