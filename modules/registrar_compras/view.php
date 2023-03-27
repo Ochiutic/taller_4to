@@ -62,41 +62,45 @@
                                 <tr>
                                     <th class="center">Codigo</th>
                                     <th class="center">Pedido de Compra</th>
+                                    <th class="center">Fecha de Pedido</th>
+                                    <th class="center">Usuario</th>
+                                    <th class="center">Orden de Compra</th>
+                                    <th class="center">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php 
                             $nro=1;
-                            $query = mysqli_query($mysqli, "SELECT * FROM v_detalle_mat")
+                            $query = mysqli_query($mysqli, "SELECT * FROM v_registro")
                             or die('Error'.mysqli_error($mysqli));
 
                             while($data = mysqli_fetch_assoc($query)){
-                               $cod = $data['cod_pmat'];
-                               $descri_presu = $data['descri_presu'];
-                               $descri_mat = $data['descri_pmat'];
-                               $fecha = $data['fecha'];
-                               $hora = $data['hora'];
+                               $cod = $data['ped_cod'];
+                               $ped_descri = $data['ped_descri'];
+                               $ped_fecha = $data['ped_fecha'];
+                               $id_user = $data['id_user'];
+                               $ord_cod= $data['ord_descrip'];
                                $estado = $data['estado'];
 
 
 
                                echo "<tr>
                                <td class='center'>$cod</td>
-                               <td class='center'>$descri_presu</td>
-                               <td class='center'>$descri_mat</td>
-                               <td class='center'>$fecha</td>
-                               <td class='center'>$hora</td>
+                               <td class='center'>$ped_descri</td>
+                               <td class='center'>$ped_fecha</td>
+                               <td class='center'>$id_user</td>
+                               <td class='center'>$ord_cod</td>
                                <td class='center'>$estado</td>
                                <td class='center' width='150'>
                                <div>";?>
-                            <a data-toggle="tooltip" data-placement="top" title="Anular Pedido de Material" class="btn btn-danger btn-sm"
-                             href="modules/pedido_material/proses.php?act=anular&cod_pmat=<?php echo $data['cod_pmat']; ?>"
-                             onclick = "return confirm('Estas seguro/a de anular <?php echo $data['descri_presu']; ?>  <?php echo $data['descri_pmat']; ?> <?php echo $data['fecha']; ?> <?php echo $data['hora']; ?> <?php echo $data['estado']; ?>?');">
+                            <a data-toggle="tooltip" data-placement="top" title="Anular Registro de IVA y compras" class="btn btn-danger btn-sm"
+                             href="modules/registrar_compras/proses.php?act=anular&ped_cod=<?php echo $data['ped_cod']; ?>"
+                             onclick = "return confirm('Estas seguro/a de anular <?php echo $data['ped_descri']; ?>  <?php echo $data['ped_fecha']; ?> <?php echo $data['name_user']; ?> <?php echo $data['name_user']; ?> <?php echo $data['ord_descrip']; ?> <?php echo $data['estado']; ?>?');">
                                 <i style="color_#000" class="glyphicon glyphicon-trash "></i>
                              </a>
 
                              <a data-toggle="tooltip" data-placement="top" title="Imprimir factura de Pedidos" class="btn btn-warning btn-sm"
-                              href="modules/pedido_material/print.php?act=imprimir&cod_pmat=<?php echo $data['cod_pmat']; ?>" target="_blank">
+                              href="modules/registrar_compras/print.php?act=imprimir&ped_cod=<?php echo $data['ped_cod']; ?>" target="_blank">
                                 <i style="color:#000" class="fa fa-print"></i>
                               </a>
                                 <?php echo "</div>

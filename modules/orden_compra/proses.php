@@ -13,7 +13,7 @@
                 $cliente = $_POST['cliente'];
                 $proveedor = $_POST['proveedor'];
                 $precio=$_POST['presu'];
-                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_orden_com(ord_cod, cod_razon, prv_cod, precio) 
+                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_orden_com(ord_cod, cod_razon, prv_cod, presu_cod) 
                                                         VALUES ( $codigo, $cliente,$proveedor, $precio)")
                 or die('Error 22: '.mysqli_error($mysqli));
 

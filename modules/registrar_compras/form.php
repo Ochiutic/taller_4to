@@ -29,19 +29,25 @@ if ($_GET['form'] == 'add') { ?>
                             }
                             ?>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Codigo de Registro</label>
+                                <label class="col-sm-1 control-label">N° Registro</label>
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" name="codigo" value="<?php echo $codigo;?>" readonly>
                                 </div>
-                                <label class="col-sm-2 control-label">Usuario</label>
+                                <label class="col-sm-1 control-label">Usuario</label>
                                 <div class="col-sm-2">
                                     <input type="text" name="usuario" class="form-control" value="<?php echo $_SESSION ['name_user']?>" readonly>
                                 </div>
-                                <label class="col-sm-2 control-label">Estado</label>
+                                <label class="col-sm-1 control-label">Fecha</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control date-picker" data-date-format="dd-mm-yyyy" name="fecha" autocomplete="off" 
+                                        value="<?php echo date("yy-m-d"); ?>" readonly>
+                                    </div>
+                                <label class="col-sm-1 control-label">Estado</label>
                                 <div class="col-sm-2">
                                     <input type="text" name="estado_" class="form-control" value="pendiente" readonly>
                                 </div>
                             </div>
+                            <hr>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Orden de compra Aprob.</label>
                                     <div class="col-sm-3">
@@ -62,6 +68,7 @@ if ($_GET['form'] == 'add') { ?>
                                             <input type="text" class="form-control" name="registro" autocomplete="off" placeholder="Ingresa una Descripción" required>
                                         </div>                   
                             </div>
+                            <hr>
                             <div class="form-group">
                                     <label class="col-sm-2 control-label">Proveedores</label>
                                     <div class="col-sm-3">
@@ -79,19 +86,24 @@ if ($_GET['form'] == 'add') { ?>
                                     </div>
                                     <label class="col-sm-2 control-label">Presupuesto Compra</label>
                                     <div class="col-sm-3">
-                                        <select class="chosen-select" name="precio" data-placeholder="-- Seleccione el Presupuesto" autocomplete="off">
-                                            <option value=""></option>
-                                            <?php 
-                                                $query_presu = mysqli_query($mysqli,"SELECT presu_cod, precio
-                                                FROM det_presu_prov
-                                                ORDER BY presu_cod ASC") or die('error'.mysqli_error($mysqli));
-                                                while($data_pre = mysqli_fetch_assoc($query_presu)){
-                                                    echo "<option value=\"$data_pre[presu_cod]\">$data_pre[presu_cod] | $data_pre[precio]</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
+                                            <input type="text" class="form-control" name="precio" autocomplete="off" placeholder="Ingrese el Precio" required>
+                                        </div> 
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">IVA</label>
+                                <div class="col-sm-3">
+                                            <input type="text" class="form-control" name="iva" autocomplete="off" placeholder="Calcule el IVA" required>
+                                        </div> 
+                            </div>
+
+                            <div class="box-footer">
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
+                                            <a href="?module=registrar_compras" class="btn btn-default btn-reset">Cancelar</a>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
             </div>
         </div>
