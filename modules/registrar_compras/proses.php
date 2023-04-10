@@ -43,21 +43,43 @@ else{
         }
     }
 
-    elseif($_GET['act']=='anular'){
-        if(isset($_GET['cod_costos'])){
-            $codigo = $_GET['cod_costos'];
-            //Anular cabecera de compra (cambiar estado a anulado)
-            $query = mysqli_query($mysqli, "UPDATE costos SET estado='anulado' WHERE cod_costos=$codigo")
-            or die('Error'.mysqli_error($mysqli));
+    elseif ($_GET['act']=='on') {
+        if (isset($_GET['ped_cod'])) {
+            
+            $ped_cod = $_GET['ped_cod'];
+            $estado = "pendiente";
+            
 
-            //Consultar detalle de compra con el código que llegó por get
-           
-            if($query){
-                header("Location: ../../main.php?module=costos&alert=2");
-            } else {
-               header("Location: ../../main.php?module=costos&alert=3");
+        
+            $query = mysqli_query($mysqli, "UPDATE registrar_compra SET estado  = '$estado'
+                                                          WHERE ped_cod = '$ped_cod'")
+                                            or die('error: '.mysqli_error($mysqli));
+
+  
+            if ($query) {
+               
+                header("location: ../../main.php?module=registrar_compras&alert=5");
             }
-       }
+        }
+    }
+
+
+    elseif($_GET['act']=='anular'){
+        if (isset($_GET['ped_cod'])) {
+            
+            $ped_cod = $_GET['ped_cod'];
+            $estado  = "activo";
+        
+            $query = mysqli_query($mysqli, "UPDATE registrar_compra SET estado  = '$estado'
+                                                          WHERE ped_cod = '$ped_cod'")
+                                            or die('Error : '.mysqli_error($mysqli));
+            
+                    
+            if ($query) {
+              
+                header("location: ../../main.php?module=registrar_compras&alert=4");
+            }
+        }
     }
 
 

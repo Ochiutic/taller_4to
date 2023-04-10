@@ -18,10 +18,10 @@ else{
                 $cod_materia= $row['id_materia'];
                 $codigo_materia= $row['cod_materia'];
                 $cantidad= $row['cantidad_tmp'];
-                $depo= $_POST['deposito'];
+                
 
-                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_pmat (cod_pmat, cod_materia, cantidad, cod_deposito) 
-                                                        VALUES ( $cod_materia, $codigo_materia, $cantidad, $depo)")
+                $insert_detalle = mysqli_query($mysqli, "INSERT INTO detalle_pmat (cod_pmat, cod_materia) 
+                                                        VALUES ( $cod_materia, $codigo_materia)")
                 or die('Error 22: '.mysqli_error($mysqli));
 
                 //Insertar orden
@@ -47,6 +47,19 @@ else{
                 header("Location: ../../main.php?module=pedido_material&alert=3");
             }
         }
+
+        //Actualizar Stock
+        $query= mysqli_query($mysqli, "SELECT * FROM stock WHERE cod_materia = $codigo_materia")
+        or die('Error'.mysqli_error($mysqli));
+        if($count = mysqli_num_rows($query)== 0)
+        //Insertar
+        $insertar_stock= mysqli_query($mysqli, "INSERT INTO stock (cod_materia, cantidad)
+        VALUES ($codigo_materia, $cantidad )")
+        or die('Error'.mysqli_error($mysqli));
+        //actualizar stock
+        $actualizar_stock= mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad - $cantidad
+        WHERE cod_materia= $codigo_materia")
+        or die('Error'.mysqli_error($mysqli));  
     }
 
     elseif($_GET['act']=='anular'){

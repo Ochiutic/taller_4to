@@ -86,8 +86,18 @@ if ($_GET['form'] == 'add') { ?>
                                     </div>
                                     <label class="col-sm-2 control-label">Presupuesto Compra</label>
                                     <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="precio" autocomplete="off" placeholder="Ingrese el Precio" required>
-                                        </div> 
+                                        <select class="chosen-select" name="precio" data-placeholder="Seleccione Proveedor" autocomplete="off">
+                                                <option value=""></option>
+                                                <?php 
+                                                $query_precio = mysqli_query($mysqli,"SELECT presu_cod, precio
+                                                FROM det_presu_prov
+                                                ORDER BY presu_cod ASC") or die('error'.mysqli_error($mysqli));
+                                                while($data_precio = mysqli_fetch_assoc($query_precio)){
+                                                    echo "<option value=\"$data_precio[presu_cod]\">$data_precio[precio]</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">IVA</label>

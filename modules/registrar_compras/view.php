@@ -93,12 +93,22 @@
                                <td class='center'>$estado</td>
                                <td class='center' width='150'>
                                <div>";?>
-                            <a data-toggle="tooltip" data-placement="top" title="Anular Registro de IVA y compras" class="btn btn-danger btn-sm"
-                             href="modules/registrar_compras/proses.php?act=anular&ped_cod=<?php echo $data['ped_cod']; ?>"
-                             onclick = "return confirm('Estas seguro/a de anular <?php echo $data['ped_descri']; ?>  <?php echo $data['ped_fecha']; ?> <?php echo $data['name_user']; ?> <?php echo $data['name_user']; ?> <?php echo $data['ord_descrip']; ?> <?php echo $data['estado']; ?>?');">
-                                <i style="color_#000" class="glyphicon glyphicon-trash "></i>
-                             </a>
-
+                            <?php
+                                    if ($data['estado']=='pendiente') { ?>
+                            <a data-toggle="tooltip" data-placement="top" title="bloqueado" style="margin-right:5px" 
+                            class="btn btn-warning btn-sm" href="modules/registrar_compras/proses.php?act=anular&ped_cod=<?php echo $data['ped_cod'];?>">
+                            <i class="glyphicon glyphicon-remove"></i>
+                            </a>
+            <?php
+                          } 
+                          else { ?>
+                            <a data-toggle="tooltip" data-placement="top" title="aprobado" style="margin-right:5px" 
+                            class="btn btn-success btn-sm" href="modules/registrar_compras/proses.php?act=on&ped_cod=<?php echo $data['ped_cod'];?>">
+                                <i style="color:#fff" class="glyphicon glyphicon-ok"></i>
+                            </a>
+            <?php
+                          }
+                          ?>
                              <a data-toggle="tooltip" data-placement="top" title="Imprimir factura de Pedidos" class="btn btn-warning btn-sm"
                               href="modules/registrar_compras/print.php?act=imprimir&ped_cod=<?php echo $data['ped_cod']; ?>" target="_blank">
                                 <i style="color:#000" class="fa fa-print"></i>

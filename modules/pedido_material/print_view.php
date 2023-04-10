@@ -53,7 +53,6 @@
                         <th height="30" align="center" valign="middle"><small>CODIGO</small></th>
                         <th height="30" align="center" valign="middle"><small>Descripción del Material</small></th>
                         <th height="30" align="center" valign="middle"><small>Tipo de Material</small></th>
-                        <th height="30" align="center" valign="middle"><small>Deposito</small></th>
                         <th height="30" align="center" valign="middle"><small>Cantidad</small></th>
                     </tr>
                 </thead>
@@ -63,13 +62,11 @@
                         $codigo1= $data2['cod_materia'];
                         $descri_materia= $data2['descri_materia'];
                         $tipo_materia = $data2['tipo_materia'];
-                        $depo = $data2['descripcion'];
                         $cantidad = $data2['cantidad'];
                             echo "<tr>
                                     <td width='80' align='center'>$codigo1</td>
                                     <td width='150' align='left'>$descri_materia</td>
                                     <td width='150' align='center'>$tipo_materia</td>
-                                    <td width='150' align='center'>$depo</td>
                                     <td width='150' align='center'>$cantidad</td>
                                 </tr>";
                         }

@@ -56,7 +56,7 @@
                         <tbody>
                             <?php 
                             $nro=1;
-                            $query = mysqli_query($mysqli, "SELECT * FROM v_compra1")
+                            $query = mysqli_query($mysqli, "SELECT * FROM v_compra2")
                             or die('Error'.mysqli_error($mysqli));
 
                             while($data = mysqli_fetch_assoc($query)){

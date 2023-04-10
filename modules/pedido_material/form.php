@@ -70,20 +70,6 @@
                                         </div>
                                     </div>  
 
-                                    <label class="col-sm-2 control-label">Deposito</label>
-                                    <div class="col-sm-3">
-                                        <select class="chosen-select" name="deposito" data-placeholder="Seleccione la Orden de Produccion" autocomplete="off" required>    
-                                            <option value=""></option>
-                                            <?php 
-                                                $query_depo = mysqli_query($mysqli,"SELECT cod_deposito, descripcion
-                                                FROM deposito
-                                                ORDER BY cod_deposito ASC") or die('error'.mysqli_error($mysqli));
-                                                while($data_depo = mysqli_fetch_assoc($query_depo)){
-                                                    echo "<option value=\"$data_depo[cod_deposito]\">$data_depo[cod_deposito] | $data_depo[descripcion]</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
                                                 
                                 </div>  
                                 <hr>

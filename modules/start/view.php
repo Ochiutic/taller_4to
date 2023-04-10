@@ -105,6 +105,25 @@
                 </div>
 
                 <div class="col-lg-4 col-xs-6">
+                    <div style="background-color: #CBC513; color: #fff" class="small-box">
+                        <div class="inner">
+                            <p><strong>Control de Produccion por Etapas</strong>
+                                <ul>
+                                    <li>Control </li>
+                                    <li>de</li>
+                                    <li>Produccion por Etapas</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-sobre"></i>
+                        </div>
+                            <a href="?module=control_produccion" class="small-box-footer" title="Ver Control de Produccion" data-toggle="tooltip">
+                            <i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-xs-6">
                     <div style="background-color: #2A46AC; color: #fff" class="small-box">
                         <div class="inner">
                             <p><strong>Costos de Produccion</strong>

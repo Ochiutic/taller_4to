@@ -4,7 +4,7 @@
         if(isset($_GET['ord_cod'])){
             $codigo = $_GET['ord_cod'];
             //Cabecera de Venta
-            $cabecera_orden = mysqli_query($mysqli, "SELECT * FROM v_compra1
+            $cabecera_orden = mysqli_query($mysqli, "SELECT * FROM v_compra2
                                                         WHERE ord_cod = $codigo")
                                                         or die('error'.mysqli_error($mysqli));
             while($data = mysqli_fetch_assoc($cabecera_orden)){

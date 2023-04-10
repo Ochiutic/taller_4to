@@ -33,7 +33,7 @@
                                         Stock General
                                         <?php 
 
-                                            $query_val = mysqli_query($mysqli, "SELECT * FROM v_stock
+                                            $query_val = mysqli_query($mysqli, "SELECT * FROM v_stock1
                                                                                 ORDER BY cod_materia ASC") or die ('Error'.mysqli_error($mysqli));
 
                                         ?>
@@ -68,7 +68,7 @@
                                 <?php 
                                     if(!empty($_POST['codigo_materia'])){
                                         $codigo_materia = $_POST['codigo_materia'];
-                                        $query_val = mysqli_query($mysqli, "SELECT * FROM v_stock WHERE cod_materia = $codigo_materia
+                                        $query_val = mysqli_query($mysqli, "SELECT * FROM v_stock1 WHERE cod_materia = $codigo_materia
                                                                             ORDER BY cod_materia ASC") or die ('Error'.mysqli_error($mysqli));
             
                                     }
@@ -90,6 +90,7 @@
                         <thead>
                             <tr>
                                  <th class="center">Codigo</th>
+                                 <th class="center">Deposito</th>
                                 <th class="center">Materia Prima</th>
                                 <th class="center">Tipo de Materia Prima</th>
                                 <th class="center">Cantidad</th>
@@ -100,19 +101,20 @@
                             <?php 
                                 $nro=1;
                                 if(isset($codigo_materia)){
-                                    $query = mysqli_query($mysqli, "SELECT * FROM v_stock WHERE cod_materia = $codigo_materia
+                                    $query = mysqli_query($mysqli, "SELECT * FROM v_stock1 WHERE cod_materia = $codigo_materia
                                     ORDER BY cod_materia ASC")
                                                                 or die('Error: '.mysqli_error($mysqli));
                                 } else if(isset($cod_deposito)){
-                                    $query = mysqli_query($mysqli, "SELECT * FROM v_stock WHERE cod_deposito = $cod_deposito;")
+                                    $query = mysqli_query($mysqli, "SELECT * FROM v_stock1 WHERE cod_deposito = $cod_deposito;")
                                                                 or die('Error: '.mysqli_error($mysqli));
                                 } else {
-                                    $query = mysqli_query($mysqli, "SELECT * FROM v_stock ;")
+                                    $query = mysqli_query($mysqli, "SELECT * FROM v_stock1 ;")
                                                                 or die('Error: '.mysqli_error($mysqli));
                                 }
                                 
                                 while($data = mysqli_fetch_assoc($query)){
                                     $cod_materia = $data ['cod_materia'];
+                                    $cod_deposito = $data ['descripcion'];
                                     $d_materia = $data ['descri_materia'];
                                     $t_d_materia = $data ['tipo_materia'];
                                     $cantidad = $data ['cantidad'];
@@ -120,6 +122,7 @@
 
                                     echo "<tr>
                                             <td class='center'>$cod_materia</td>
+                                            <td class='center'>$cod_deposito    </td>
                                             <td class='center'>$d_materia</td>
                                             <td class='center'>$t_d_materia</td>
                                             <td class='center'>$cantidad</td>
