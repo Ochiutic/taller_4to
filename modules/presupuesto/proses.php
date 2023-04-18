@@ -53,7 +53,7 @@
                 }
             }
         }
-     /*   elseif($_GET['act']=='anular'){
+        elseif($_GET['act']=='anular'){
             if(isset($_GET['cod_presu'])){
                 $codigo = $_GET['cod_presu'];
 
@@ -66,7 +66,7 @@
                     header("Location: ../../main.php?module=presupuesto&alert=4");
                 }
             }
-        }*/
+        } 
 
         elseif ($_GET['act']=='on') {
             if (isset($_GET['cod_presu'])) {

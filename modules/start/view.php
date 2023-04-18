@@ -270,20 +270,20 @@
 
 
                 <div class="col-lg-4 col-xs-6">
-                    <div style="background-color: #D02B16; color: #fff" class="small-box">
+                    <div style="background-color: #5D20D1; color: #fff" class="small-box">
                         <div class="inner">
-                            <p><strong>Control de Calidad</strong>
-                                <ul>
-                                    <li>Control</li>
+                            <p><strong>Nota de Remision</strong>
+                                <ul>    
+                                    <li>Nota</li>
                                     <li>de</li>
-                                    <li>Calidad</li>
+                                    <li>Remision</li>
                                 </ul>
                             </p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-check-circle"></i>
+                            <i class="fa fa-book"></i>
                         </div>
-                            <a href="?module=control" class="small-box-footer" title="Control de Calidad" data-toggle="tooltip">
+                            <a href="?module=nota_remision" class="small-box-footer" title="Ver Nota de Remision" data-toggle="tooltip">
                             <i class="fa fa-plus"></i></a>
                     </div>
                 

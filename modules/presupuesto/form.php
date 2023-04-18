@@ -71,7 +71,7 @@
                                             <option value=""></option>
                                             <?php 
                                                 $query_raz = mysqli_query($mysqli,"SELECT cod_pedi, descri_pedi 
-                                                FROM pedidos
+                                                FROM pedidos WHERE estado= 'activo'
                                                 ORDER BY cod_pedi ASC") or die('error'.mysqli_error($mysqli));
                                                 while($data_ord = mysqli_fetch_assoc($query_raz)){
                                                     echo "<option value=\"$data_ord[cod_pedi]\">$data_ord[cod_pedi] | $data_ord[descri_pedi]  </option>";

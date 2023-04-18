@@ -94,6 +94,12 @@
                                     <td class='center'>$estado</td>
                                     <td class='center' width='100'>
                                     <div>"; ?>
+
+                    <a data-toggle="tooltip" data-placement="top" title="Anular Pedido de Compra" class="btn btn-danger btn-sm"
+                             href="modules/compras/proses.php?act=anular&ped_cod=<?php echo $data['ped_cod']; ?>"
+                             onclick = "return confirm('Estas seguro/a de anular <?php echo $data['descrip_com']; ?>  <?php echo $data['fecha']; ?> <?php echo $data['descri_sucursal']; ?> <?php echo $data['prv_razsoc']; ?> <?php echo $data['estado']; ?>?');">
+                                <i style="color_#000" class="glyphicon glyphicon-trash "></i>
+                             </a>
          
                                     <a data-toggle="tooltip" data-placement="top" title="Imprimir Factura" class="btn btn-warning btn-sm"
                                     href="modules/compras/print.php?act=imprimir&ped_cod=<?php echo $data['ped_cod']; ?>" target="_blank">

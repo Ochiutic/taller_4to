@@ -43,7 +43,7 @@ else{
             $query = mysqli_query($mysqli, "INSERT INTO orden_produccion (cod_orden, descri_orden, fecha, hora, estado_, cod_presu, 
             fecha_ini, fecha_fin)
             VALUES ($codigo, '$descri_orden','$fecha', '$hora', '$estado_', $presup, '$fecha_ini', '$fecha_fin' )")
-            or die('Error'.mysqli_error($mysqli));
+         or die(header("Location: ../../main.php?module=orden_produccion&alert=6"));
 
             if($query){
                 header("Location: ../../main.php?module=orden_produccion&alert=1");

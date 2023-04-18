@@ -2,11 +2,11 @@
     if($_GET['form']=='add'){?>
         <section class="content-header">
             <h1>
-                <i class="fa fa-edit icon-title"></i>Agregar Control de Produccion por Etapas.
+                <i class="fa fa-edit icon-title"></i>Agregar Nota de Remision.
             </h1>
             <ol class="breadcrumb">
                 <li><a href="?module=start"><i class="fa fa-home"></i> Inicio</a></li>
-                <li><a href="?module=control_produccion">Control de Produccion por Etapas.</a></li>
+                <li><a href="?module=nota_remision">Nota de Remision.</a></li>
                 <li class="active"> Más</li>
             </ol>
         </section>
@@ -15,10 +15,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-primary">
-                        <form role="form" class="form-horizontal" action="modules/control_produccion/proses.php?act=insert" method="POST">
+                        <form role="form" class="form-horizontal" action="modules/nota_remision/proses.php?act=insert" method="POST">
                             <div class="box-body">
                                 <?php 
-                                    $query_id = mysqli_query($mysqli, "SELECT MAX(cod_control) AS id FROM control_produccion")
+                                    $query_id = mysqli_query($mysqli, "SELECT MAX(cod_nota) AS id FROM nota_remision")
                                     or die('error'.mysqli_error($mysqli));
                                     $count = mysqli_num_rows($query_id);
                                     if($count <> 0){
@@ -43,55 +43,39 @@
                                         </div>
                                     
 
-                                    <label class="col-sm-1 control-label">Hora</label>
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control date-picker" data-date-format="H-mm-ss" name="hora" autocomplete="off" 
-                                        value="<?php echo date("H:i:s"); ?>" readonly>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                        <label class="col-sm-2 control-label">Orden de Produccion a Controlar:</label>
-                                    <div class="col-sm-3">
-                                        <select class="chosen-select" name="cod_orden" data-placeholder="-- Seleccionar  Depósito --"
-                                          autocomplete="off" required>
-                                        <option value=""></option>
-                                        <?php 
-                                            $query_dep = mysqli_query($mysqli, "SELECT cod_orden, descri_orden
-                                            FROM orden_produccion
-                                            ORDER BY cod_orden ASC") or die ('Error'.mysqli_error($mysqli));
-                                            while ($data_dep = mysqli_fetch_assoc($query_dep)){
-                                                echo "<option value=\"$data_dep[cod_orden]\">$data_dep[cod_orden] | $data_dep[descri_orden]</option>";
-                                            }
-                                        ?>
-                                    </select>       
-                                </div>
-                                <div class="form-group">
-                                        <label class="col-sm-2 control-label">Descripción de Control de Produccion:</label>
-                                       <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="descri_control" autocomplete="off" placeholder="Ingresa una Descripción" required>
+                                        <label class="col-sm-1 control-label">Usuario</label>
+                                       <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="usuario" autocomplete="off" value="<?php echo $_SESSION['name_user']; ?>" readonly>
                                         </div>
                                 </div>
 
                                 <div class="form-group">
-                                        <label class="col-sm-2 control-label">Operario en Planta:</label>
+                                        <label class="col-sm-2 control-label">Descripción de Nota de Remision:</label>
+                                       <div class="col-sm-3">
+                                            <input type="text" class="form-control" name="nota" autocomplete="off" placeholder="Ingresa una Descripción" required>
+                                        </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                        <label class="col-sm-2 control-label">Pedido de Compra:</label>
                                     <div class="col-sm-3">
-                                        <select class="chosen-select" name="id_operario" data-placeholder="-- Seleccionar  Operario --"
+                                        <select class="chosen-select" name="pedido" data-placeholder="-- Seleccione el Pedido de Compra --"
                                           autocomplete="off" required>
                                         <option value=""></option>
                                         <?php 
-                                            $query_ope = mysqli_query($mysqli, "SELECT id_operario, nombre, numero_legajo
-                                            FROM operarios
-                                            ORDER BY id_operario ASC") or die ('Error'.mysqli_error($mysqli));
-                                            while ($data_dep = mysqli_fetch_assoc($query_ope)){
-                                                echo "<option value=\"$data_dep[id_operario]\">$data_dep[id_operario] | $data_dep[nombre] | $data_dep[numero_legajo]</option>";
+                                            $query_pedi = mysqli_query($mysqli, "SELECT ped_cod, descrip_com
+                                            FROM pedido_compra
+                                            ORDER BY ped_cod ASC") or die ('Error'.mysqli_error($mysqli));
+                                            while ($data_pedido = mysqli_fetch_assoc($query_pedi)){
+                                                echo "<option value=\"$data_pedido[ped_cod]\">$data_pedido[descrip_com]</option>";
                                             }
                                         ?>
-                                    </select>          
+                                    </select>       
                                 </div>
+                                
 
-                                <div class="form-group">          
+                                <div class="form-group">
                                     <label class="col-sm-2 control-label">Materia Prima</label>
                                     <div class="col-sm-3">
                                         <select class="chosen-select" name="materia"
@@ -107,61 +91,35 @@
                                             ?>
                                         </select>
                                     </div>
-                             </div>  
+                               </div>
 
-                             <div class="form-group">          
-                                    <label class="col-sm-4 control-label">Etapas de Produccion</label>
+                                <div class="form-group">          
+                                    <label class="col-sm-2 control-label">Cantidad de Materia</label>
                                     <div class="col-sm-3">
-                                        <select class="chosen-select" name="etapas"
-                                            data-placeholder="Seleccionela la Etapa de Produccion" autocomplete="off" required>
+                                        <select class="chosen-select" name="cantidad"
+                                            data-placeholder="Seleccionela la M. Prima" autocomplete="off" required>
                                             <option value=""></option>
                                             <?php
-                                            $query_et = mysqli_query($mysqli, "SELECT cod_etapas, descri_etapas
-                                                FROM etapas
-                                                ORDER BY cod_etapas ASC") or die('error' . mysqli_error($mysqli));
-                                            while ($data_eta = mysqli_fetch_assoc($query_et)) {
-                                                echo "<option value=\"$data_eta[cod_etapas]\">$data_eta[descri_etapas] </option>";
+                                            $query_can = mysqli_query($mysqli, "SELECT cod_materia,  cantidad
+                                                FROM stock
+                                                ORDER BY cod_materia ASC") or die('error' . mysqli_error($mysqli));
+                                            while ($data_cantidad = mysqli_fetch_assoc($query_can)) {
+                                                echo "<option value=\"$data_cantidad[cod_materia]\">  $data_cantidad[cantidad] </option>";
                                             }
                                             ?>
                                         </select>
                                     </div>
-                             </div>
-                     </div>
+                             </div>  
 
-                     <div class="col-md-12">
-                        <div class="box box-primary">
-                            <hr>
-                        <div class="form-group">
-                                        <label class="col-sm-2 control-label">Ingresar Fallas detectadas</label>
-                                       <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="fallas" autocomplete="off" placeholder="Ingrese las Fallas" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                        <label class="col-sm-2 control-label">Observacion</label>
-                                       <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="obs" autocomplete="off" placeholder="Ingresa la Observacion" required>
-                                        </div>
-                                        
-                                </div>   
-                                <div class="form-group">
-                                <label class="col-sm-2 control-label">Cantidad de Fallas detectas</label>
-                                       <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="cantidad" autocomplete="off" placeholder="Ingrese las Fallas" required>
-                                        </div>
-                                        </div>   
-                          </div>
-                           </div>                           
-                                <div id="resultados" class="col-md-9"></div>
+            
+                     
 
                                 <div class="box-footer">
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
-                                            <a href="?module=control" class="btn btn-default btn-reset">Cancelar</a>
-                                            <a class="btn btn-primary btn-social pull-right" href="?module=form_etapas&form=add" title="Agregar" data-toggle="tooltip">
-                                    <i class="fa fa-plus"></i>Etapas de Produccion
-                                    </a>
+                                            <a href="?module=nota_remision" class="btn btn-default btn-reset">Cancelar</a>
+                    
                                         </div>
                                     </div>
                                 </div>

@@ -54,7 +54,7 @@
                                             <option value=""></option>
                                             <?php 
                                                 $query_raz = mysqli_query($mysqli,"SELECT cod_presu, descri_presu
-                                                FROM presupuesto
+                                                FROM presupuesto WHERE estado= 'aprobado'
                                                 ORDER BY cod_presu ASC") or die('error'.mysqli_error($mysqli));
                                                 while($data_ord = mysqli_fetch_assoc($query_raz)){
                                                     echo "<option value=\"$data_ord[cod_presu]\">$data_ord[cod_presu] | $data_ord[descri_presu]</option>";

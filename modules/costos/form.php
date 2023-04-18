@@ -49,7 +49,7 @@
 
                                 <div class="form-group">
                                  <div class="form-group">
-                                         <label class="col-sm-2 control-label">Descripcion de los Costos</label>
+                                         <label class="col-sm-4 control-label">Descripcion de los Costos</label>
                                         <div class="col-sm-2">
                                           <input type="text" class="form-control" name="descri_costos" onKeyPress="return goodchars(event,'0123456789',this)"  required>
                                         </div>
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Orden de Produccion</label>
                                     <div class="col-sm-3">
-                                        <select class="chosen-select" name="cod_orden" data-placeholder="Seleccione el Pedido" autocomplete="off" required>    
+                                        <select class="chosen-select" name="cod_orden" data-placeholder="Seleccione la Orden" autocomplete="off" required>    
                                             <option value=""></option>
                                             <?php 
                                                 $query_ord = mysqli_query($mysqli,"SELECT cod_orden, descri_orden
@@ -69,13 +69,26 @@
                                             ?>
                                         </select>
                                     </div>
-   
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Cantidad de Orden</label>
+                                         <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="detalle_orden" onKeyPress="return goodchars(event,'0123456789',this)" >   
+                                        </div>           
+                              </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">Precio Orden</label>
+                                         <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="precio_orden" onKeyPress="return goodchars(event,'0123456789',this)" >   
+                                        </div>
                                 </div>
+                                
                               
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Pedido Material</label>
-                                    <div class="col-sm-4">
-                                        <select class="chosen-select" name="cod_pmat" data-placeholder="Seleccione el Pedido" autocomplete="off" required>    
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="pmaterial" data-placeholder="Seleccione el Pedido" autocomplete="off" required>    
                                             <option value=""></option>
                                             <?php 
                                                 $query_pmat = mysqli_query($mysqli,"SELECT cod_pmat, descri_pmat
@@ -87,55 +100,81 @@
                                             ?>
                                         </select>
                                     </div>
-                                 </div>
 
-                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Manufactura</label>
-                                    <div class="col-sm-4">
-                                        <select class="chosen-select" name="cod_manu" data-placeholder="-- Seleccione la Manufactura --" autocomplete="off" required>    
-                                            <option value=""></option>
-                                            <?php 
-                                                $query_manu = mysqli_query($mysqli,"SELECT cod_manu, descri_manu
-                                                FROM manufactura
-                                                ORDER BY cod_manu ASC") or die('error'.mysqli_error($mysqli));
-                                                while($data_manu = mysqli_fetch_assoc($query_manu)){
-                                                    echo "<option value=\"$data_manu[cod_manu]\">$data_manu[cod_manu] | $data_manu[descri_manu]</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                 </div>
-
-                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label"> Tipo de Manufactura</label>
-                                    <div class="col-sm-4">
-                                        <select class="chosen-select" name="cod_tipo_manu" data-placeholder="-- Seleccione el Tipo de Manufactura --" autocomplete="off" required>    
-                                            <option value=""></option>
-                                            <?php 
-                                                $query_manu = mysqli_query($mysqli,"SELECT cod_manu, tipo_manu
-                                                FROM manufactura
-                                                ORDER BY cod_manu ASC") or die('error'.mysqli_error($mysqli));
-                                                while($data_manu = mysqli_fetch_assoc($query_manu)){
-                                                    echo "<option value=\"$data_manu[cod_manu]\">$data_manu[cod_manu] | $data_manu[tipo_manu]</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                 </div>
-                            <div class="form-group">
-                                 <div class="form-group">
-                                         <label class="col-sm-2 control-label">Cantidad</label>
-                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control" name="cantidad" onKeyPress="return goodchars(event,'0123456789',this)"  required>
-                                        </div>
-                                   
-                                    
-                                        <label class="col-sm-2 control-label">Precio</label>
+                                    <div class="form-group">
+                                    <label class="col-sm-3 control-label">Cantidad de Materia Prima</label>
                                          <div class="col-sm-2">
-                                            <input type="text" class="form-control" name="precio" onKeyPress="return goodchars(event,'0123456789',this)"required>   
+                                            <input type="text" class="form-control" name="cantidad_materia" onKeyPress="return goodchars(event,'0123456789',this)" >   
                                         </div>
-                                   
-                            </div>  
+                                </div>
+
+                                    <label class="col-sm-5 control-label">Precio de Materia</label>
+                                         <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="precio_materia" onKeyPress="return goodchars(event,'0123456789',this)" >   
+                                        </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                    <label class="col-sm-2 control-label">Receta de Produccion</label>
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="receta" data-placeholder="-- Seleccione la Receta --" autocomplete="off" required>    
+                                            <option value=""></option>
+                                            <?php 
+                                                $query_manu = mysqli_query($mysqli,"SELECT cod_recetas, descri, tipo_receta
+                                                FROM recetas
+                                                ORDER BY cod_recetas ASC") or die('error'.mysqli_error($mysqli));
+                                                while($data_manu = mysqli_fetch_assoc($query_manu)){
+                                                    echo "<option value=\"$data_manu[cod_recetas]\">$data_manu[descri] | $data_manu[tipo_receta]</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label class="col-sm-3 control-label">Cantidad de Recetas</label>
+                                         <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="cantidad_recetas" onKeyPress="return goodchars(event,'0123456789',this)" >   
+                                        </div>
+                                </div>
+                              
+                                <div class="form-group">
+                                        <label class="col-sm-5 control-label">Precio de Receta</label>
+                                         <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="precio_receta" onKeyPress="return goodchars(event,'0123456789',this)" >   
+                                        </div>
+                                  </div>
+                               <div class="form-group">
+                                    <label class="col-sm-2 control-label">Sectores de Trabajos</label>
+                                    <div class="col-sm-3">
+                                        <select class="chosen-select" name="sectores" data-placeholder="-- Seleccione los Sectores --" autocomplete="off" required>    
+                                            <option value=""></option>
+                                            <?php 
+                                                $query_sec = mysqli_query($mysqli,"SELECT cod_sector, descrip_sector
+                                                FROM sector
+                                                ORDER BY cod_sector ASC") or die('error'.mysqli_error($mysqli));
+                                                while($data_sec = mysqli_fetch_assoc($query_sec)){
+                                                    echo "<option value=\"$data_sec[cod_sector]\">$data_sec[descrip_sector] </option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div> 
+                                    <label class="col-sm-2 control-label">Cantidad de Operarios</label>
+                                         <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="cantidad_ope" onKeyPress="return goodchars(event,'0123456789',this)" required>   
+                                        </div>   
+                                 </div>    
+                                 
+                                 <div class="form-group">
+                                        
+                                  </div>
+
+                                  <div class="form-group">
+                                        <label class="col-sm-5 control-label">Salario</label>
+                                         <div class="col-sm-2">
+                                            <input type="text" class="form-control" name="salario" onKeyPress="return goodchars(event,'0123456789',this)" >   
+                                        </div>
+                                  </div>
+                              
                
 
                                 <div class="box-footer">

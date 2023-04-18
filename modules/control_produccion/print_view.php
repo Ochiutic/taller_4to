@@ -17,9 +17,13 @@
                                     $estado = $data['estado'];
             }
         }
-         //Detal|le de Orden
+         //Detal|le de Control Produccion 
          $detalle_compra = mysqli_query($mysqli, "SELECT * FROM detalle_control_produc WHERE cod_control = $codigo")
-         or die('error'.mysqli_error($mysqli));                                          
+         or die('error'.mysqli_error($mysqli)); 
+         
+         //Detalle Fallas
+         $detalle_fallas = mysqli_query($mysqli, "SELECT * FROM v_detalle_fallas WHERE cod_fallas = $codigo")
+         or die('error'.mysqli_error($mysqli)); 
     }
 ?>
 <!DOCTYPE html>
@@ -47,6 +51,43 @@
             <label><strong>Operaria a Control: </strong><?php echo $nombre; ?></label><br>         
             <label><strong>Estado de la Orden: </strong><?php echo $estado; ?></label><br>
         </div>
+        <div style="border: solid">  </div>
+        <div>
+            <table width="100%" border="0.3" cellpaddign="0" cellspacing="0" align="center">
+                <thead style="background:#e8ecee">
+                    <tr class="tabla-title" style="background: #22AF2F">
+                        <th height="30" align="center" valign="middle"><small>N° de Fallas</small></th>
+                        <th height="30" align="center" valign="middle"><small>Descripcion de Fallas</small></th>
+                        <th height="30" align="center" valign="middle"><small>Descripcion de Materia</small></th>
+                        <th height="30" align="center" valign="middle"><small>Tipo de Materia</small></th>
+                        <th height="30" align="center" valign="middle"><small>Orden de Produccion Controlada</small></th>
+                        <th height="30" align="center" valign="middle"><small>Cantidad</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                       while($data3 = mysqli_fetch_assoc($detalle_fallas)){
+                        $codigo2= $data3['cod_fallas'];
+                        $descri_fallas= $data3['descri_fallas'];
+                        $descri_materia= $data3['descri_materia'];
+                        $tipo_materia= $data3['tipo_materia'];
+                        $orden = $data3['descri_orden'];
+                        $cantidad = $data3['cantidad'];
+                            echo "<tr>
+                                    <td width='80' align='center'>$codigo2</td>
+                                    <td width='80' align='center'>$descri_fallas</td>
+                                    <td width='120' align='left'>$descri_materia</td>
+                                    <td width='120' align='center'>$tipo_materia</td>
+                                    <td width='120' align='center'>$orden</td>
+                                    <td width='150' align='center'>$cantidad</td>
+                                </tr>";
+                        }
+                    ?> 
+                    
+                </tbody>
+            </table>
+        </div>
+        <hr>
         <div style="border: solid">  </div>
         <div>
             <table width="100%" border="0.3" cellpaddign="0" cellspacing="0" align="center">

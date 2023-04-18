@@ -29,6 +29,9 @@
     </head>
     <body>
         <div style="border: solid">
+        <div align="right= 50">
+            <img src="../../images/apple-icon-72x72.png">
+    </div>
         <div align='center'>
             <strong>THN PARAGUAY S.A.</strong> <br>
             <strong>Timbrado: </strong> 12345678  <br>
@@ -46,6 +49,7 @@
             <label><strong>Estado del Pedido :</strong><?php echo $estado; ?></label><br>
         </div>
         <div style="border: solid">  </div>
+        
         <div>
             <table width="100%" border="0.3" cellpaddign="0" cellspacing="0" align="center">
                 <thead style="background:#e8ecee">

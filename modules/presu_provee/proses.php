@@ -62,16 +62,16 @@
             }
         }
         elseif($_GET['act']=='anular'){
-            if(isset($_GET['cod_pedi'])){
-                $codigo = $_GET['cod_pedi'];
+            if(isset($_GET['presu_cod'])){
+                $codigo = $_GET['presu_cod'];
 
-                $query = mysqli_query($mysqli, "UPDATE pedidos SET estado='anulado'
-                                                WHERE cod_pedi = $codigo")
+                $query = mysqli_query($mysqli, "UPDATE presu_provee SET estado='anulado'
+                                                WHERE presu_cod = $codigo")
                                                 or die('error'.mysqli_error($mysqli));
                 if($query){
-                    header("Location: ../../main.php?module=pedidos&alert=3");
+                    header("Location: ../../main.php?module=presu_provee&alert=3");
                 }else{
-                    header("Location: ../../main.php?module=pedidos&alert=4");
+                    header("Location: ../../main.php?module=presu_provee&alert=4");
                 }
             }
         }

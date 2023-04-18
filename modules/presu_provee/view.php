@@ -88,6 +88,12 @@
                               href="modules/presu_provee /print.php?act=imprimir&presu_cod=<?php echo $data['presu_cod']; ?>" target="_blank">
                                 <i style="color:#000" class="fa fa-print"></i>
                               </a>
+
+                              <a data-toggle="tooltip" data-placement="top" title="Anular Pedido de Compra" class="btn btn-danger btn-sm"
+                             href="modules/presu_provee/proses.php?act=anular&presu_cod=<?php echo $data['presu_cod']; ?>"
+                             onclick = "return confirm('Estas seguro/a de anular ?');">
+                                <i style="color_#000" class="glyphicon glyphicon-trash "></i>
+                             </a>
                                 <?php echo "</div>
                                 </td>
                                 </tr>" ?>

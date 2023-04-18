@@ -49,10 +49,10 @@
                         <thead>
                             <tr>
                                 <th class="center">Codigo</th>
-                                <th class="center">Orden de Produccion</th>
-                                <th class="center">Pedido de Material</th>
+                                <th class="center">Descripcion del Costo</th>
                                 <th class="center">Fecha</th>
                                 <th class="center">Hora</th>
+                                <th class="center">Total</th>
                                 <th class="center">Estado</th>
                                 <th class="center">Acción</th>
                             </tr>
@@ -60,23 +60,23 @@
                         <tbody>
                             <?php
                                 $nro=1;
-                                $query=mysqli_query($mysqli, "SELECT * FROM v_costos ")
+                                $query=mysqli_query($mysqli, "SELECT * FROM costos ")
                                 or die('error 62: '.mysqli_error($mysqli));
 
                                 while($data = mysqli_fetch_assoc($query)){
                                     $cod= $data['cod_costos'];
-                                    $descri_orden = $data['descri_orden'];
-                                    $descri_pmat = $data['descri_pmat'];
+                                    $descri_costos = $data['descri_costos'];
                                     $fecha = $data['fecha'];
                                     $hora = $data['hora'];
+                                    $total = $data['total'];
                                     $estado = $data['estado'];
 
                                     echo "<tr>
                                     <td class='center'>$cod</td>
-                                    <td class='center'>$descri_orden</td>
-                                    <td class='center'>$descri_pmat</td>
+                                    <td class='center'>$descri_costos</td>
                                     <td class='center'>$fecha</td>
                                     <td class='center'>$hora</td>
+                                    <td class='center'>$total</td>
                                     <td class='center'>$estado</td>
                                     <td class='center' width='100'>
                                     <div>"; ?>

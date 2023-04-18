@@ -19,12 +19,6 @@
                 or die('Error 22: '.mysqli_error($mysqli));
 
                 //Insertar orden
-                
-            
-            
-
-
-
                 $descrip_com = $_POST['descrip_com'];
                 $fecha = $_POST['fecha'];
                 $estado ='activo';
@@ -38,36 +32,42 @@
                     header("Location: ../../main.php?module=compras&alert=4");
                 }
             }
+
         } 
         
-        //Insertar Stock
         elseif($_GET['act']=='anular'){
-            if(isset($_GET['cod_pedi'])){
-                $codigo = $_GET['cod_pedi'];
+            if(isset($_GET['ped_cod'])){
+                $codigo = $_GET['ped_cod'];
 
-                $query = mysqli_query($mysqli, "UPDATE pedidos SET estado='anulado'
-                                                WHERE cod_pedi = $codigo")
+                $query = mysqli_query($mysqli, "UPDATE registrar_compra SET estado='anulado'
+                                                WHERE ped_cod = $codigo")
                                                 or die('error'.mysqli_error($mysqli));
                 if($query){
-                    header("Location: ../../main.php?module=pedidos&alert=3");
+                    header("Location: ../../main.php?module=compras&alert=3");
                 }else{
-                    header("Location: ../../main.php?module=pedidos&alert=4");
+                    header("Location: ../../main.php?module=compras&alert=4");
                 }
             }
         }
+            //Actualizar Stock
+                $query= mysqli_query($mysqli, "SELECT * FROM stock WHERE cod_materia = $materia AND cod_deposito = $depo ")
+                or die('Error'.mysqli_error($mysqli));
+                if($count = mysqli_num_rows($query)== 0)
+                //Insertar
+                $insertar_stock= mysqli_query($mysqli, "INSERT INTO stock (cod_materia, cod_deposito, cantidad)
+                VALUES ($materia, $depo, $cantidad )")
+                or die('Error'.mysqli_error($mysqli));
+                //actualizar stock
+                $actualizar_stock= mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad
+                WHERE cod_materia= $materia
+                AND cod_deposito= $depo")
+                or die('Error'.mysqli_error($mysqli))
+         
         
     }
-     //Actualizar Stock
-     $query= mysqli_query($mysqli, "SELECT * FROM stock WHERE cod_materia = $materia AND cod_deposito = $depo ")
-     or die('Error'.mysqli_error($mysqli));
-     if($count = mysqli_num_rows($query)== 0)
-     //Insertar
-     $insertar_stock= mysqli_query($mysqli, "INSERT INTO stock (cod_materia, cod_deposito, cantidad)
-     VALUES ($materia, $depo, $cantidad )")
-     or die('Error'.mysqli_error($mysqli));
-     //actualizar stock
-     $actualizar_stock= mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad
-     WHERE cod_materia= $materia
-     AND cod_deposito= $depo")
-     or die('Error'.mysqli_error($mysqli))
+    
 ?>
+
+
+//Insertar Stock
+       

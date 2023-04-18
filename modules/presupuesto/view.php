@@ -277,6 +277,12 @@
                             <?php
                           }
                           ?>!-->
+
+                    <a data-toggle="tooltip" data-placement="top" title="Anular Presupuesto de Clientes" class="btn btn-danger btn-sm"
+                             href="modules/presupuesto/proses.php?act=anular&cod_presu=<?php echo $data['cod_presu']; ?>"
+                             onclick = "return confirm('Estas seguro/a de anular ?');">
+                                <i style="color_#000" class="glyphicon glyphicon-trash "></i>
+                             </a>
                              <a data-toggle="tooltip" data-placement="top" title="Imprimir factura de compra" class="btn btn-warning btn-sm"
                               href="modules/presupuesto/print.php?act=imprimir&cod_presu=<?php echo $data['cod_presu']; ?>" target="_blank">
                                 <i style="color:#000" class="fa fa-print"></i>
